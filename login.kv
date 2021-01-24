@@ -1,0 +1,940 @@
+<Label>:
+    color:0,0,0,1
+<Button>:
+    color:1,1,1,1    #padding_left, padding_top, padding_right, padding_bottom
+
+<CreateAccountWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    name: "create"
+
+    phone: phone
+    namee: namee
+    password: password
+    address: address
+    status: status
+
+    FloatLayout:
+        size: self.parent.size
+        cols:1
+
+        FloatLayout:
+            size: self.parent.size
+            size: root.width, root.height/2
+
+            Label:
+                text: "REGISTER"
+                bold: True
+                color: 0,0,1.48,0.8
+                size_hint: 0.8, 0.18
+                pos_hint: {"x":0.1, "top":1.02}
+                font_size: (root.width**2 + root.height**2) / 14.6**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.85}
+                text: "Name: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.85}
+                size_hint: 0.4, 0.09
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.86-0.13}
+                text: "Phone: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.86-0.13}
+                size_hint: 0.4, 0.09
+                id: phone
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.87-0.13*2}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.87-0.13*2}
+                size_hint: 0.4, 0.09
+                id: password
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.88-0.13*3}
+                text: "Address: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.88-0.13*3}
+                size_hint: 0.4, 0.09
+                id: address
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.89-0.13*4}
+                text: "Health Status: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.89-0.13*4}
+                size_hint: 0.4, 0.09
+                id: status
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.13}
+            size_hint: 0.47, 0.09
+            font_size: (root.width**2 + root.height**2) / 17**4
+            background_color: 0,0.4,1,0.7
+            text: "Already have an Account? Log In"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.02}
+            size_hint: 0.47, 0.09
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 15**4
+            background_color: 0,0.4,1,0.7
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+<LoginWindow>:
+    name: "login"
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    phone: phone
+    password: passw
+
+    FloatLayout:
+        size: self.parent.size
+
+        Label:
+            text: "LOGIN"
+            color: 0,0,1.48,0.8
+            bold: True
+            size_hint: 0.8, 0.18
+            pos_hint: {"x":0.1, "top":1}
+            font_size: (root.width**2 + root.height**2) / 14.6**4
+
+        TextInput:
+            id: phone
+            hint_text: "Phone Number"
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x":0.3, "top":0.80}
+            size_hint: 0.45, 0.09
+            padding: [2, (self.height-self.line_height)/2]
+            text: "7896"
+
+        TextInput:
+            id: passw
+            hint_text: "Password"
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.3 , "top":0.81-0.13}
+            size_hint: 0.45, 0.09
+            padding: [2, (self.height-self.line_height)/2]
+            text: "abc"
+
+        Button:
+            pos_hint:{"x":0.28,"y":0.06}
+            size: 720, 140
+            size_hint: 0.45, 0.1
+            font_size: (root.width**2 + root.height**2) / 16**4
+            background_color: 0,0.4,1,0.7
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginButton()
+
+        Button:
+            pos_hint:{"x":0.28,"y":0.20}
+            size_hint: 0.45, 0.1
+            font_size: (root.width**2 + root.height**2) / 17.5**4
+            background_color: 0,0.4,1,0.7
+            text: "Don't have an Account? Create One"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createButton()
+
+                root.manager.transition.direction = "down"
+<MainWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    namee: namee
+    date:date
+
+    BoxLayout:
+        size: self.parent.size
+        orientation: 'vertical'
+        spacing: 20
+        padding: 0, 20, 10, 10
+        Label:
+            bold: True
+            halign: 'center'
+            font_color: 0,0,0,1
+            pos_hint: {"x":0.1, "top":1.02}
+            size_hint: 0.8, 0.08
+            text: "App Permissions"
+
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 0, 20, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.2,0.43,0.128, 0.6
+                Rectangle:
+                    pos: 0, 950
+                    size : self.parent.size
+
+            Label:
+                id: namee
+                haligh: 'left'
+                pos_hint:{"x": 0.1, "y":0.5}
+
+            Label:
+                bold: True
+                halign: 'center'
+                pos_hint:{"x": 0.08, "top":1.01}
+                text: "Terms of Services and Privacy \nWe understand the sensitivity of the topic \n and have taken strong measures to ensure \n that your data is not compromised"
+
+            Label:
+                id: date
+                pos_hint:{"x": 0.46, "top":1.5}
+                valign: 'top'
+                text: "Registered: "
+
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 10, 20, 0, 0
+
+            CheckBox:
+                size_hint_x: 0.1
+                on_active: root.checkbox_click1(self, self.active)
+            Label:
+                text_size: self.size
+                color: 0,0,0,1
+                valign: 'bottom'      #The default is 'bottom'
+                halign: 'left'
+                text: " DEVICE LOCATION  \n It is recommended that you set your location sharing to \n 'Always'. You can change this anytime later."
+
+        BoxLayout:
+            orientation: 'horizontal'
+            CheckBox:
+                size_hint_x: 0.1
+                on_active: root.checkbox_click2(self, self.active)
+            Label:
+                text_size: self.size
+                color: 0,0,0,1
+                valign: 'bottom'      #The default is 'bottom'
+                halign: 'left'
+                text: "BLUETOOTH \n Monitor your device's proximity to another mobile device. \n It is recommended that you keep it ON at all times"
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            CheckBox:
+                size_hint_x: 0.1
+                on_active: root.checkbox_click3(self, self.active)
+            Label:
+                text_size: self.size
+                color: 0,0,0,1
+                valign: 'center'      #The default is 'bottom'
+                halign: 'left'
+                text: "DATA SHARING  \n Your data will be shared only with the system administrator. The App does not allow your name nad number to be disclosed to the public at large at any time."
+
+        Label:
+            text_size: self.size
+            valign:'center'
+            halign:'left'
+            markup: True
+            color: 0,0,0,1
+            text: "Please indicate your acceptance of [color=3333ff][ref=Terms of services]Terms of services[/ref][/color] and [color=3333ff][ref=Privacy Policy]Privacy Policy[/ref][/color] by click the button below."
+            on_ref_press:
+                import webbrowser
+                webbrowser.open('http://google.com')
+
+        Button:
+            size_hint_y: 0.2
+            pos_hint:{"x":0.40,"top":1.05}
+            size_hint: 0.2, 0.5
+            background_color: 0,0.4,1,0.7
+            text: "I Agree"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.checkSelection()
+
+<FormWindow>:
+    name: "form"
+    btnSymptom: btnSymptom
+    age: age
+    namee: namee
+    travel: travel
+    fever: fever
+    gender: gender
+
+    GridLayout:
+        cols: 1
+        rows: 3
+        padding: 20, 10, 10, 10
+        Label:
+            bold: True
+            size_hint_y: 0.07
+            font_size: '20sp'
+            # pos_hint: {"x":0.1, "y":0.48}
+            text: "COVID-19 App"
+
+
+
+        TabbedPanel:
+            do_default_tab: False
+            background_color: (1,1,1,0)
+
+            TabbedPanelItem:
+                background_color: (0,0.4,1,0.7)
+                text:"Your Status"
+
+                FloatLayout:
+                    cols:1
+
+                    FloatLayout:
+                        size: root.width, root.height/2
+
+                        Label:
+                            text: "Self Assessment Test"
+                            bold: True
+                            color: 0,0,1.48,0.8
+                            size_hint: 0.8, 0.18
+                            pos_hint: {"x":0.1, "top":1.06}
+                            font_size: (root.width**2 + root.height**2) / 15**4
+
+                        Label:
+                            size_hint: 0.5,0.12
+                            pos_hint: {"x":0.1, "top":0.90}
+                            text: "What is your name: "
+                            text_size: (self.width, None)
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        TextInput:
+                            pos_hint: {"x":0.5, "top":0.88}
+                            size_hint: 0.4, 0.09
+                            id: namee
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        Label:
+                            size_hint: 0.5,0.12
+                            pos_hint: {"x":0.1, "top":0.91-0.13}
+                            text: "What is your Age"
+                            text_size: (self.width, None)
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        TextInput:
+                            pos_hint: {"x":0.5, "top":0.89-0.13}
+                            size_hint: 0.4, 0.09
+                            id: age
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        Label:
+                            size_hint: 0.5,0.12
+                            pos_hint: {"x":0.1, "top":0.92-0.13*2}
+                            text: "What is your Gender"
+                            text_size: (self.width, None)
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        TextInput:
+                            pos_hint: {"x":0.5, "top":0.90-0.13*2}
+                            size_hint: 0.4, 0.09
+                            id: gender
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        Label:
+                            size_hint: 0.5,0.12
+                            pos_hint: {"x":0.08, "top":0.93-0.13*3}
+                            text_size: (self.width, None)
+                            text: "Your body temperature"
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        TextInput:
+                            pos_hint: {"x":0.5, "top":0.91-0.13*3}
+                            size_hint: 0.4, 0.09
+                            id: fever
+                            input_filter: "float"
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        Label:
+                            size_hint: 0.5,0.12
+                            pos_hint: {"x":0.1, "top":0.94-0.13*4}
+                            text: "Your travel history: "
+                            text_size: (self.width, None)
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        TextInput:
+                            pos_hint: {"x":0.5, "top":0.92-0.13*4}
+                            size_hint: 0.4, 0.09
+                            id: travel
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        Label:
+                            size_hint: 0.5,0.12
+                            pos_hint: {"x":0.09, "top":0.95-0.13*5}
+                            text: "Do you have following symptoms: "
+                            text_size: (self.width, None)
+                            font_size: (root.width**2 + root.height**2) / 16**4
+
+                        Button:
+                            pos_hint: {"x":0.5, "top":0.93-0.13*5}
+                            size_hint: 0.4, 0.09
+                            id: btnSymptom
+                            font_size: (root.width**2 + root.height**2) / 16**4
+                            text: 'Press'
+                            on_parent: dropdown.dismiss()
+                            on_release: dropdown.open(self)
+                            height: '48dp'
+                            background_color: 0,0.4,1,0.6
+
+                        DropDown:
+                            id: dropdown
+                            on_select: btnSymptom.text = '{}'.format(args[1])
+
+                            Button:
+                                text: 'Fever or chills'
+                                background_color: 1,1,1,0.4
+                                color: 0,0.4,1,0.9
+                                size_hint_y: None
+                                height: '35dp'
+                                on_release: dropdown.select('Fever or chills')
+
+                            Button:
+                                text: 'Cough'
+                                size_hint_y: None
+                                height: '35dp'
+                                background_color: 1,1,1,0.4
+                                color: 0,0.4,1,0.9
+                                on_release: dropdown.select('Cough')
+
+                            Button:
+                                text: 'Shortness of breath'
+                                size_hint_y: None
+                                height: '35dp'
+                                background_color: 1,1,1,0.4
+                                color: 0,0.4,1,0.9
+                                on_release: dropdown.select('Shortness of breath')
+
+                            Button:
+                                text: 'Fatigue'
+                                size_hint_y: None
+                                height: '35dp'
+                                background_color: 1,1,1,0.4
+                                color: 0,0.4,1,0.9
+                                on_release: dropdown.select('Fatigue')
+
+                            Button:
+                                text: 'None of the above'
+                                size_hint_y: None
+                                height: '35dp'
+                                background_color: 1,1,1,0.4
+                                color: 0,0.4,1,0.9
+                                on_release: dropdown.select('None of the above')
+
+                    Button:
+                        pos_hint:{"x":0.27,"y":0.05}
+                        size_hint: 0.47, 0.075
+                        font_size: (root.width**2 + root.height**2) / 15**4
+                        background_color: 0,0.4,1,0.7
+                        text: "Submit"
+                        on_release:
+                            root.manager.transition.direction = "right"
+                            root.yourStatus()
+
+
+            TabbedPanelItem:
+                background_color: (0,0.4,1,0.7)
+                text:"Next Step"
+
+
+            TabbedPanelItem:
+                background_color: (0,0.4,1,0.7)
+                text:"Ask Us"
+
+
+<PatientList>:
+    name: "patient_list"
+    patientName: pName
+
+<HelpCenters>:
+    name: "centerlist"
+
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0.929, 0.941, 0.953, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        orientation: 'vertical'
+        spacing: 20
+        padding: 20, 20, 10, 10
+        Label:
+            bold: True
+            color: 0,0,1.48,0.8
+            font_size: '23sp'
+            pos_hint: {"x":0.1, "top":1.02}
+            size_hint: 0.8, 0.08
+            text: "HelpLine List"
+
+        Button:
+            pos_hint: {"top":1, "right":1}
+            size_hint: 0.20, 0.059
+            background_color: 0,0.4,1,0.7
+            text: "< Back"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.backLowRisk()
+
+
+        GridLayout:
+            size_hint: 1, None
+            size_hint_y: None
+            height: 25
+            cols: 2
+
+            Label:
+                bold: True
+                color: 0,0,1.48,0.8
+                text: "Phone Number"
+            Label:
+                bold: True
+                color: 0,0,1.48,0.8
+                text: "State"
+
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.2,0.428,0.128, 0.25
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            RecycleView:
+                viewclass: 'Label'
+                data: [{'text': str(x)} for x in root.data_items]
+                RecycleGridLayout:
+                    cols: 2
+                    size_hint: 1, None
+                    default_size: None, dp(20)
+                    default_size_hint: 1, None
+                    height: self.minimum_height
+                    width: self.minimum_width
+
+
+<LowRiskStatus>:
+    name: "lowRiskScreen"
+
+    GridLayout:
+        cols: 1
+        rows: 3
+        padding: 20, 10, 20, 10
+        Label:
+            bold: True
+            size_hint_y: 0.15
+            font_size: '21sp'
+            #color: 0,0.4,1,1
+            # pos_hint: {"x":0.1, "y":0.48}
+            text: "COVID-19 App"
+
+        GridLayout:
+            cols: 1
+            rows:3
+            size_hint_y: 0.40
+            padding: 10, 20, 5, 5
+            canvas:
+                Color:
+                    rgba: 0.2,0.43,0.128, 0.6
+                Rectangle:
+                    pos: self.pos
+                    size : self.width, self.height
+            GridLayout:
+                cols: 2
+                rows: 1
+                size_hint_y: 0.40
+                Image:
+                    source: 'images/lowrisk.png'
+                    size_hint_x: 0.3
+                    allow_stretch: True
+
+                Label:
+                    bold: True
+                    text_size: (self.width, None)
+                    font_size: '20sp'
+                    color: 0,1.28,0,1
+                    halign:'left'
+                    valign: 'middle'
+                    text: "      You are safe"
+
+            Label:
+                text_size: (self.width, None)
+                font_size: '16sp'
+                size_hint_y: 0.30
+                halign:'right'
+                valign: 'top'
+                text: "You have low risk of COVID infection"
+
+
+            Label:
+                size_hint_y: 0.45
+                text_size: (self.width, None)
+                text_size: self.size
+                valign: 'top'
+                text: "* Your risk level is based both on self-assessment data provided by you as well as any close contact"
+
+        GridLayout:
+            cols: 1
+            rows: 5
+            padding: 0, 20, 0, 50
+            Label:
+                bold: True
+                font_size: '16sp'
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+                size_hint_y: 0.05
+                text: "Be prepared but don't panic"
+
+            Label:
+                text_size: self.size
+                size_hint_y:  0.15
+                font_size: '14sp'
+                halign: 'justify'
+                valign: 'top'
+                text: "With timely medical intervention and safety and hygiene we can beat the spread of Coronavirus. Please educate yourself, exercise caution and do no panic. "
+
+            BoxLayout:
+                size_hint_y: 0.10
+                padding: 0, 10, 0, 10
+                Button:
+                    size: 0.2, self.height
+                    background_color: 0,1.28,0,0.7
+                    text: "Recommended Next Step >"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.nextSteps()
+
+            BoxLayout:
+                size_hint_y: 0.10
+                padding: 0, 5, 0, 10
+                Button:
+                    background_color: 0,0.4,1,0.7
+                    text: "Covid-19 Help Centers"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.navigateCenterPage()
+
+            BoxLayout:
+                size_hint_y: 0.10
+                padding: 0, 5, 0, 20
+                Button:
+                    size: 0.2, self.height
+                    background_color: 0,0.4,1,0.7
+                    text: "Self-Assessment Test"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.chatBot()
+
+
+<NextStepsLowRisk>:
+    name: "lowRiskStep"
+
+    GridLayout:
+        cols: 1
+        rows: 3
+        canvas.before:
+            Color:
+                rgba:0.2,0.43,0.128, 0.6
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            size_hint_y:0.07
+            padding: 0,7,10,0
+            orientation:'horizontal'
+
+            Image:
+                source: 'images/lowrisk.png'
+                size_hint_x: 0.2
+                allow_stretch: True
+
+            Label:
+                bold: True
+                size_hint_x: 0.5
+                size_hint_y: 0.07
+                font_size: '19sp'
+                color:0.28, 0.30, 1.55, 1
+                pos_hint: {"x":0.03, "y":0.48}
+                halign:'left'
+                text_size: (self.width, None)
+                text: "Reduce Your Risk"
+
+            Button:
+                size_hint_x: 0.15
+                size_hint_y: 0.6
+                pos_hint:{"top":0.9}
+                background_color: 0.2,0.43,0.128, 0.3
+                text: "< Back"
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.backLowRisk()
+
+
+        Label:
+            bold: True
+            size_hint_y: 0.06
+            font_size: '15sp'
+            color:1,1,1,1
+            text_size: (self.width, None)
+            text: "    Follow these steps"
+
+        GridLayout:
+            col: 1
+            rows: 3
+            size_hint_y: 0.70
+            padding: 20, 20, 20, 20
+            spacing:5
+            canvas:
+                Color:
+                    rgba: 0.211,0.211,0.211, 0.1
+                Rectangle:
+                    pos: self.pos
+                    size : self.width, self.height
+
+            GridLayout:
+                col:1
+                rows:1
+                padding: 0, 5, 10, 5
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size : self.width, self.height
+
+                Image:
+                    source: 'images/selftest.jpeg'
+                    size_hint_x: 0.6
+                    allow_stretch: True
+                Label:
+                    bold: True
+                    text_size: (self.width, None)
+                    font_size: '14sp'
+                    font_color: 0,0,0,1
+                    halign:'center'
+                    valign: 'top'
+                    text: "Take Self Assessment Test"
+
+            GridLayout:
+                col:1
+                rows:1
+                padding: 5, 5, 5, 5
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size : self.width, self.height
+                Image:
+                    source: 'images/dist2.png'
+                    size_hint_x: 0.6
+                    allow_stretch: True
+
+                Label:
+                    bold: True
+                    text_size: (self.width, None)
+                    font_size: '14sp'
+                    font_color: 0,0,0,1
+                    halign:'center'
+                    valign: 'top'
+                    text: "Maintain Social Distancing"
+            GridLayout:
+                col:1
+                rows:1
+                padding: 5, 5, 5, 5
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size : self.width, self.height
+
+                Image:
+                    source: 'images/checkapp.jpeg'
+                    size_hint_x: 0.6
+                    allow_stretch: True
+                Label:
+                    bold: True
+                    text_size: (self.width, None)
+                    font_size: '14sp'
+                    font_color: 0,0,0,1
+                    halign:'center'
+                    valign: 'top'
+                    text: "Check app regularly for updates"
+
+
+<HighRiskStatus>:
+    name: "highRiskScreen"
+
+    GridLayout:
+        cols: 1
+        rows: 3
+        padding: 15, 10, 15, 10
+        Label:
+            bold: True
+            size_hint_y: 0.15
+            font_size: '21sp'
+            #color: 0,0.4,1,1
+            text: "COVID-19 App"
+
+        GridLayout:
+            cols: 1
+            rows:3
+            size_hint_y: 0.40
+            padding: 5, 20, 5, 5
+            canvas:
+                Color:
+                    rgba: 0.97, 0.5,0.02,0.5
+                Rectangle:
+                    pos: self.pos
+                    size : self.width, self.height
+            GridLayout:
+                cols: 2
+                rows: 1
+                size_hint_y: 0.40
+                Image:
+                    source: 'images/highRisk.png'
+                    size_hint_x: 0.2
+                    allow_stretch: True
+
+                Label:
+                    bold: True
+                    text_size: (self.width, None)
+                    font_size: '20sp'
+                    #color: 0.95, 0.38,0.02,1
+                    halign:'left'
+                    valign: 'top'
+                    text: "      You are at high risk"
+
+            Label:
+                text_size: (self.width, None)
+                font_size: '14sp'
+                size_hint_y: 0.30
+                halign:'center'
+                valign: 'top'
+                text: "Isolate yourself and your immediate family members"
+
+
+            Label:
+                size_hint_y: 0.45
+                text_size: (self.width, None)
+                font_size: '12sp'
+                valign: 'top'
+                text: "* Your risk level is based both on self-assessment data provided by you as well as any close contact this app detects with other who may later be diagnosed"
+
+        GridLayout:
+            cols: 1
+            rows: 5
+            padding: 5, 20, 10, 50
+            Label:
+                font_size: '15sp'
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+                size_hint_y: 0.07
+                text: "Our data shows that you might be at high risk of developing Coronavirus infection"
+
+            Label:
+                text_size: self.size
+                size_hint_y:  0.25
+                font_size: '14sp'
+                halign: 'justify'
+                valign: 'middle'
+                text: " You are advised for testing as your infection risk is high. Please call the toll-free help line 1075 to schedule your testing. List of the available testing centers is here: http://icmr.nic.in/node/39071 Please visit the official page www.mohfw.gov.in for more information on testing nad quarantine guidelines."
+
+            BoxLayout:
+                size_hint_y: 0.10
+                padding: 0, 10, 0, 10
+                Button:
+                    size_hint_x: 0.4
+                    size: 0.2, self.height
+                    background_color: 1, 0.6,0,0.7
+                    text: "1 Isolate Yourself"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.nextSteps()
+
+                Button:
+                    size_hint_x: 0.4
+                    background_color: 0,0.4,1,0.7
+                    background_color: 1, 0.6,0,0.7
+                    text: "2 Log Temperature"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.navigateCenterPage()
+
+
+
+            BoxLayout:
+                size_hint_y: 0.10
+                padding: 0, 5, 0, 10
+                Button:
+                    background_color: 1, 0.6,0,0.7
+                    text: "Get yourself tested urgently"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.navigateCenterPage()
+
+            BoxLayout:
+                size_hint_y: 0.10
+                padding: 0, 5, 0, 10
+                Button:
+                    background_color: 1, 0.6,0,0.7
+                    text: "Next Recommended Steps >"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.navigateCenterPage()
+
+
+
+
+

@@ -1,0 +1,58 @@
+<AppGrid>
+    canvas.before:
+        Color:
+            rgba: 1, 0, 0, 1
+
+    GridLayout:
+        cols:1
+        padding: 10, 10, 10, 10
+        size: root.width-20, root.height-20
+
+
+        GridLayout:
+            cols:1
+            padding: 10, 10, 10, 10
+            size: self.width, self.height
+
+            Label:
+                text_size: self.size
+                color: 0,0,0,1
+                halign: 'left'
+                valign: 'middle'
+                text: "You are safe Low risk of Corona Virus \n\n Low risk of Corona Virus infection \n Your risk level is based on data provided\nPlease check the app regularly to stay updated"
+
+        GridLayout:
+            cols:1
+            padding: 10, 10, 10, 10
+            size: self.width, self.height
+
+            Label:
+                text_size: self.size
+                color: 0,0,0,1
+                halign: 'left'
+                valign: 'top'
+                text: "Be Prepared But Don't Panic! \n\n With timely medical intervention and hygiene we can beat Corona"
+
+        Button:
+            text : "Covid-19 HelpCenter"
+            size: 40, 40
+            on_press: root.btn()
+            background_color: 0,0.4,1,0.7
+
+        Button:
+            text : "Self-Assessment Test"
+            background_color: 0,0.4,1,0.7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
